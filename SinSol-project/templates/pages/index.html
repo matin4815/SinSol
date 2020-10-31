@@ -30,7 +30,7 @@
         <!-- Category pictures -->
            <div id="category1" class="tab-pane active" >
               <div class="row popup-gallery">
-                {% for obj in object_list %}
+                {% for obj in page_obj %}
                   <div class="col-xs-12 col-sm-6 col-md-3">
                   <div class="sol">
                     <img class="img-responsive" src="{{ obj.image.url }}" alt="First category picture">
@@ -73,12 +73,19 @@
               </div>
               <nav class="text-center">
                 <ul class="pagination">
-                  <li class="active"><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#" aria-label="suivant">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a></li>
+                  {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}">previous</a></li>
+                  {% endif %}
+                  {% for page in paginator.page_range %}
+                    {% if page == page_obj.number %}
+                      <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                    {% else %}
+                      <li><a href="?page={{ page }}">{{ page }}</a></li>
+                    {% endif %}
+                  {% endfor %}
+                  {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}">next</a></li>
+                  {% endif %}
                 </ul>
               </nav>
            </div>
