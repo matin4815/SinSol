@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'contacts.apps.ContactsConfig',
     'product_tags.apps.ProductTagsConfig',
     'categories.apps.CategoriesConfig',
     'products.apps.ProductsConfig',
