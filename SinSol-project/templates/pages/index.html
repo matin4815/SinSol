@@ -21,21 +21,8 @@
       </div>
 
       <div id="index-body">
-      <!-- Pictures Navigation table -->
-        <div class="table-responsive">
-          <table class="table text-center">
-            <thead>
-              <tr>
-                {% if categories %}
-                  {% for category in categories %}
-                    <td><a class="link active" href="/{{ category.name }}" data-toggle="tab">{{ category.title }}</a></td>
-                  {% endfor %}
-                {% endif %}
-              </tr>
-            </thead>
-          </table>
-          <hr>
-        </div>
+      <!-- category navbar -->
+        {% include 'partials/_category-nav.html' %}
       
       <!-- Navigation Table Content -->
         <div class="tab-content">
@@ -43,44 +30,46 @@
         <!-- Category pictures -->
            <div id="category1" class="tab-pane active" >
               <div class="row popup-gallery">
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                <div class="sol">
-                  <img class="img-responsive" src="{% static 'images/index/portfolio/1.jpg' %}" alt="First category picture">
-                  <div class="behind">
-                      <div class="head text-center">
-                        <ul class="list-inline">
-                          <li>
-                            <a class="gallery" href="{% static 'images/index/gallery/1.jpg' %}" data-toggle="tooltip" data-original-title="Quick View">
-                              <i class="fa fa-eye"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" data-toggle="tooltip" data-original-title="Click if you like it">
-                              <i class="fa fa-heart"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" data-toggle="tooltip" data-original-title="Download">
-                              <i class="fa fa-download"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" data-toggle="tooltip" data-original-title="More information">
-                              <i class="fa fa-info"></i>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="row box-content">
-                        <ul class="list-inline text-center">
-                          <li><i class="fa fa-eye"></i> 1000</li>
-                          <li><i class="fa fa-heart"></i> 500</li>
-                          <li><i class="fa fa-download"></i> 100</li>
-                        </ul>
-                      </div>
+                {% for obj in object_list %}
+                  <div class="col-xs-12 col-sm-6 col-md-3">
+                  <div class="sol">
+                    <img class="img-responsive" src="{{ obj.image.url }}" alt="First category picture">
+                    <div class="behind">
+                        <div class="head text-center">
+                          <ul class="list-inline">
+                            <li>
+                              <a class="gallery" href="{{ obj.image.url }}" data-toggle="tooltip" data-original-title="Quick View">
+                                <i class="fa fa-eye"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" data-toggle="tooltip" data-original-title="Click if you like it">
+                                <i class="fa fa-heart"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" data-toggle="tooltip" data-original-title="Download">
+                                <i class="fa fa-download"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" data-toggle="tooltip" data-original-title="More information">
+                                <i class="fa fa-info"></i>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="row box-content">
+                          <ul class="list-inline text-center">
+                            <li><i class="fa fa-eye"></i> 1000</li>
+                            <li><i class="fa fa-heart"></i> 500</li>
+                            <li><i class="fa fa-download"></i> 100</li>
+                          </ul>
+                        </div>
+                    </div>
                   </div>
-                </div>
-                </div>  
+                  </div>  
+                {% endfor %}
               </div>
               <nav class="text-center">
                 <ul class="pagination">

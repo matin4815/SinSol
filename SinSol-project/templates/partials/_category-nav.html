@@ -1,0 +1,16 @@
+{% load static %}
+<!-- Pictures Navigation table -->
+<div class="table-responsive">
+  <table class="table text-center">
+    <thead>
+      <tr>
+        {% if categories %}
+          {% for category in categories %}
+            <td><a class="link active" href="{{ category.name }}" >{{ category.title }}</a></td>
+          {% endfor %}
+        {% endif %}
+      </tr>
+    </thead>
+  </table>
+  <hr>
+</div>
